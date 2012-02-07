@@ -61,7 +61,7 @@ public class HelloServlet extends HttpServlet {
         if (req.getContentType().equals("text/plain")) {
             String data = readBody(req).toLowerCase();
             users.add(data);
-            out.write(data);
+            out.write("Done: " + data);
         } else {
             resp.sendError(406,
                     "Content-Type not defined or unknown - needs to be"

@@ -44,7 +44,7 @@ public class HelloServlet extends HttpServlet {
     /**
      * List of names.
      */
-    private static List<String> users = new LinkedList<String>();
+    private List<String> users = new LinkedList<String>();
 
     @Override
     protected final void doGet(final HttpServletRequest req,

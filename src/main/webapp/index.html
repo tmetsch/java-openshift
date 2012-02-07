@@ -7,12 +7,20 @@
     <meta name="keywords" content="Thijs Metsch" />
     <meta name="Content-Language" content="en" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/style.css" type="text/css" media="screen" />
   </head>
   <body>
     <div id="content">
         <h1>A simple OpenShift kinda RESTful test app...</h1>
-        <a href="users/"/>go here</a>
+        <a href="users/"/>go here</a> to get to the application.
+        <p>
+            The following things will work:
+        </p>
+        <ul>
+            <li />HTTP POST with the Content-Type text/plain and a name in the body of the message.
+            <li />A HTTP GET on users/ to list all users and
+            <li />A HTTP GET on users/<name> To get a Hello world message.
+        </ul>
     </div>
   </body>
 </html>

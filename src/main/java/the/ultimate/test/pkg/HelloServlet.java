@@ -38,15 +38,14 @@ public class HelloServlet extends HttpServlet {
 
         PrintWriter out = resp.getWriter();
         if (users.size() == 0) {
-            out.write(createHtml("<h1>Currently no Users are known</h1>"));
+            out.write("No user resource found.");
         } else if (path == null || path.equals("/")) {
-            String tmp = "<h1>Know users</h1>";
+            out.write("I know the following users:");
             for (String name : users) {
-                tmp += "<a href=/\"" + name + "\">" + name + "</a><br />";
+                out.write("\n" + name);
             }
-            out.write(createHtml(tmp));
         } else if (users.contains(path.substring(1))) {
-            out.write(createHtml("<h1>Hello " + path.substring(1) + "</h1>"));
+            out.write("Hello " + path.substring(1));
         } else {
             resp.sendError(404, "Path not found: " + path);
         }
@@ -66,7 +65,7 @@ public class HelloServlet extends HttpServlet {
                         "Not supporting updates - user does exist.");
             }
             users.add(data);
-            out.write(createHtml(data));
+            out.write(data);
         } else {
             resp.sendError(406,
                     "Content-Type not defined or unknown - needs to be"
@@ -98,31 +97,5 @@ public class HelloServlet extends HttpServlet {
 
         bufferedReader.close();
         return stringBuilder.toString().replace("\n", "");
-    }
-
-    /**
-     * Create a HTML string.
-     *
-     * @param body
-     *            The body part...
-     * @return A String.
-     */
-    private final String createHtml(String body) {
-        String tmp = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
-        tmp += "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">";
-        tmp += "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">";
-        tmp += "  <head>";
-        tmp += "<title>Simple App</title>";
-        tmp += "<meta name=\"description\" content=\"An OpenShift Test App\" />";
-        tmp += "<meta name=\"Content-Language\" content=\"en\" />";
-        tmp += "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />";
-        tmp += "<link rel=\"stylesheet\" href=\"style.css\" type=\"text/css\" media=\"screen\" />";
-        tmp += "</head>";
-        tmp += "<body>";
-        tmp += body;
-        tmp += "</body>";
-        tmp += "</html>";
-
-        return tmp;
     }
 }

@@ -58,7 +58,7 @@ public class HelloServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
 
         // extract data
-        if (req.getContentType().equals("text/plain")) {
+        if (req.getContentType().equals("text/plain") && req.getPathInfo().contains("users")) {
             String data = readBody(req).toLowerCase();
             if (users.contains(data)) {
                 resp.sendError(400,
@@ -68,8 +68,7 @@ public class HelloServlet extends HttpServlet {
             out.write(data);
         } else {
             resp.sendError(406,
-                    "Content-Type not defined or unknown - needs to be"
-                            + " text/plain...");
+                    "Could not handle request - check URN and Content-Type.");
         }
     }
 

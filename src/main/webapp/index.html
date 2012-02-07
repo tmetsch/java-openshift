@@ -7,7 +7,38 @@
     <meta name="keywords" content="Thijs Metsch" />
     <meta name="Content-Language" content="en" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="/style.css" type="text/css" media="screen" />
+    <style type="text/css">
+<!--
+body {
+  background-color: #fff;
+  color: #888;
+  font-size: 0.9em;
+  font-family: Ubuntu, Ubuntubeta, Verdana, Arial, SunSans-Regular,
+    Sans-Serif;
+}
+
+#content {
+  width: 32%;
+  margin: 15% auto;
+  text-align: left;
+  padding: 1em;
+}
+h1 {
+  color: #95b143;
+  font-size: 1.6em;
+  font-weight: bold;
+}
+
+p {
+  color: #111;
+  text-align: justify;
+}
+
+a {
+  color: #95b143;
+}
+-->
+    </style>
   </head>
   <body>
     <div id="content">
@@ -17,7 +48,7 @@
             The following things will work:
         </p>
         <ul>
-            <li />HTTP POST with the Content-Type text/plain and a name in the body of the message.
+            <li />HTTP POST on users/ with the Content-Type text/plain and a name in the body of the message.
             <li />A HTTP GET on users/ to list all users and
             <li />A HTTP GET on users/<name> To get a Hello world message.
         </ul>

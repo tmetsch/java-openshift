@@ -47,7 +47,7 @@ public class HelloServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
         if (users.size() == 0) {
             out.write("No user resource found.");
-        } else if (path.equals("/")) {
+        } else if (path == null || path.equals("/")) {
             for (String name : users) {
                 out.write(name);
             }

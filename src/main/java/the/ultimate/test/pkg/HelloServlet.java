@@ -80,9 +80,10 @@ public class HelloServlet extends HttpServlet {
             if (users.contains(data)) {
                 resp.sendError(HTTP_BAD_REQUEST,
                         "Not supporting updates - user does exist.");
+            } else {
+                users.add(data);
+                out.write(data);
             }
-            users.add(data);
-            out.write(data);
         } else {
             resp.sendError(HTTP_NOT_ACCEPTED,
                     "Content-Type not defined or unknown - needs to be"

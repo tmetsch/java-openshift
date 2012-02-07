@@ -29,15 +29,7 @@ public class HelloServlet extends HttpServlet {
     /**
      * List of names.
      */
-    private List<String> users = null;
-
-    /**
-     * Constructor.
-     */
-    public HelloServlet() {
-        users = new LinkedList<String>();
-        users.add("bob");
-    }
+    private static List<String> users = new LinkedList<String>();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)

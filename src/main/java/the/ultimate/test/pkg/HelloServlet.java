@@ -64,18 +64,17 @@ public class HelloServlet extends HttpServlet {
             throws ServletException, IOException {
 
         PrintWriter out = resp.getWriter();
-        out.write("Hellow Rold");
 
-//        // extract data
-//        if (req.getContentType().equals("text/plain")) {
-//            String data = readBody(req).toLowerCase();
-//            users.add(data);
-//            out.write(data);
-//        } else {
-//            resp.sendError(406,
-//                    "Content-Type not defined or unknown - needs to be"
-//                            + " text/plain...");
-//        }
+        // extract data
+        if (req.getContentType().equals("text/plain")) {
+            String data = readBody(req).toLowerCase();
+            users.add(data);
+            out.write(data);
+        } else {
+            resp.sendError(406,
+                    "Content-Type not defined or unknown - needs to be"
+                            + " text/plain...");
+        }
     }
 
     /**

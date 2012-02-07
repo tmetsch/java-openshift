@@ -68,7 +68,6 @@ public class HelloServlet extends HttpServlet {
         if (req.getContentType().equals("text/plain")) {
             String data = readBody(req).toLowerCase();
             users.add(data);
-            resp.setStatus(200);
             out.write(data);
         } else {
             resp.sendError(406,

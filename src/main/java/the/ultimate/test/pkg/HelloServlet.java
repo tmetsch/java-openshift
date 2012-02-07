@@ -44,14 +44,14 @@ public class HelloServlet extends HttpServlet {
         String path = req.getPathInfo();
 
         PrintWriter out = resp.getWriter();
-        if (path.equals("")) {
+        if (users.size() == 0) {
+            out.write("No user resource found.");
+        } else if (users.contains(path)) {
+            out.write("Hello " + path);
+        } else if (path == null) {
             for (String name : users) {
                 out.write(name);
             }
-        } else if (users.contains(path)) {
-            out.write("Hello " + path);
-        } else if (users.size() == 0) {
-            out.write("No user resource found.");
         } else {
             out.write(path);
             resp.sendError(404);
@@ -71,8 +71,8 @@ public class HelloServlet extends HttpServlet {
             out.write(data);
         } else {
             resp.sendError(406,
-                    "Content-Type not defined or unknown - needs to be" +
-                    " text/plain...");
+                    "Content-Type not defined or unknown - needs to be"
+                            + " text/plain...");
         }
     }
 

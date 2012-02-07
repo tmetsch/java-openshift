@@ -42,16 +42,19 @@ public class HelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String path = req.getPathInfo().substring(1);
+        String path = req.getPathInfo();
 
         PrintWriter out = resp.getWriter();
         if (users.size() == 0) {
             out.write("No user resource found.");
-        } else if (users.contains(path)) {
+        } else if (path == null) {
+            for (String name : users) {
+                out.write(name);
+            }
+        } else if (users.contains(path.substring(1))) {
             out.write("Hello " + path);
         } else {
-            out.write(path);
-            resp.sendError(404);
+            resp.sendError(404, "Path not found: " + path);
         }
     }
 

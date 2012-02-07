@@ -43,11 +43,6 @@ public class HelloServlet extends HttpServlet {
             throws ServletException, IOException {
         String path = req.getContextPath().substring(1);
 
-        System.out.println("size" + users.size());
-        for (String item : users) {
-            System.out.println(item);
-        }
-
         PrintWriter out = resp.getWriter();
         if (path.equals("")) {
             for (String name : users) {
@@ -55,6 +50,8 @@ public class HelloServlet extends HttpServlet {
             }
         } else if (users.contains(path)) {
             out.write("Hello " + path);
+        } else if (users.size() == 0) {
+            out.write("No user resource found.");
         } else {
             resp.sendError(404);
         }
@@ -70,7 +67,6 @@ public class HelloServlet extends HttpServlet {
         // extract data
         if (req.getContentType().equals("text/plain")) {
             String data = readBody(req).toLowerCase();
-            System.out.println("body was:" + data);
             users.add(data);
             resp.setStatus(200);
             out.write(data);

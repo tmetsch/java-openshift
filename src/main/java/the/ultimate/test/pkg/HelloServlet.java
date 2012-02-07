@@ -41,7 +41,7 @@ public class HelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String path = req.getContextPath().substring(1);
+        String path = req.getContextPath();
 
         PrintWriter out = resp.getWriter();
         if (path.equals("")) {

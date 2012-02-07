@@ -44,18 +44,19 @@ public class HelloServlet extends HttpServlet {
         String path = req.getContextPath();
 
         PrintWriter out = resp.getWriter();
-        if (path.equals("")) {
-            for (String name : users) {
-                out.write(name);
-            }
-        } else if (users.contains(path)) {
-            out.write("Hello " + path);
-        } else if (users.size() == 0) {
-            out.write("No user resource found.");
-        } else {
-            out.write(path);
-            resp.sendError(404);
-        }
+//        if (path.equals("")) {
+//            for (String name : users) {
+//                out.write(name);
+//            }
+//        } else if (users.contains(path)) {
+//            out.write("Hello " + path);
+//        } else if (users.size() == 0) {
+//            out.write("No user resource found.");
+//        } else {
+//            out.write(path);
+//            resp.sendError(404);
+//        }
+        out.write(path);
     }
 
     @Override

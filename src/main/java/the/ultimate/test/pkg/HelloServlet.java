@@ -41,7 +41,7 @@ public class HelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String path = req.getContextPath();
+        String path = req.getPathInfo();
 
         PrintWriter out = resp.getWriter();
         if (path.equals("")) {
@@ -62,7 +62,7 @@ public class HelloServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        PrintWriter out = new PrintWriter(resp.getWriter());
+        PrintWriter out = resp.getWriter();
 
         // extract data
         if (req.getContentType().equals("text/plain")) {

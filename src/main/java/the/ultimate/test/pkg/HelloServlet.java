@@ -56,7 +56,6 @@ public class HelloServlet extends HttpServlet {
             out.write(path);
             resp.sendError(404);
         }
-        out.close();
     }
 
     @Override

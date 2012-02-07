@@ -81,9 +81,6 @@ public class HelloServletTest extends TestCase{
                     oneOf(req).getContentType();
                     will(returnValue("text/plain"));
 
-                    oneOf(req).getPathInfo();
-                    will(returnValue("/users"));
-
                     oneOf(req).getInputStream();
                     will(returnValue(new DummyInputStream("Bob")));
 
@@ -170,9 +167,6 @@ public class HelloServletTest extends TestCase{
                     oneOf(req).getContentType();
                     will(returnValue("text/plain"));
 
-                    oneOf(req).getPathInfo();
-                    will(returnValue("/users"));
-
                     oneOf(req).getInputStream();
                     will(returnValue(new DummyInputStream("Bob2")));
 
@@ -186,7 +180,7 @@ public class HelloServletTest extends TestCase{
             context.checking(new Expectations() {
                 {
                     oneOf(req).getPathInfo();
-                    will(returnValue("/bob2"));
+                    will(returnValue("/bob"));
 
                     oneOf(resp).getWriter();
                     will(returnValue(new PrintWriter(System.out, true)));

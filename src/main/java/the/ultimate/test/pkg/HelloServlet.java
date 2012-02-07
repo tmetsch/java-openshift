@@ -22,6 +22,21 @@ import javax.servlet.http.HttpServletResponse;
 public class HelloServlet extends HttpServlet {
 
     /**
+     * HTTP error.
+     */
+    private static final int HTTP_NOT_ACCEPTED = 406;
+
+    /**
+     * HTTP error.
+     */
+    private static final int HTTP_BAD_REQUEST = 400;
+
+    /**
+     * HTTP error.
+     */
+    private static final int HTTP_NOT_FOUND = 404;
+
+    /**
      * A serial UID.
      */
     private static final long serialVersionUID = -2345771005431135205L;
@@ -32,8 +47,9 @@ public class HelloServlet extends HttpServlet {
     private static List<String> users = new LinkedList<String>();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+    protected final void doGet(final HttpServletRequest req,
+            final HttpServletResponse resp) throws ServletException,
+            IOException {
         String path = req.getPathInfo();
 
         PrintWriter out = resp.getWriter();
@@ -47,13 +63,14 @@ public class HelloServlet extends HttpServlet {
         } else if (users.contains(path.substring(1))) {
             out.write("Hello " + path.substring(1));
         } else {
-            resp.sendError(404, "Path not found: " + path);
+            resp.sendError(HTTP_NOT_FOUND, "Path not found: " + path);
         }
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+    protected final void doPost(final HttpServletRequest req,
+            final HttpServletResponse resp) throws ServletException,
+            IOException {
 
         PrintWriter out = resp.getWriter();
 
@@ -61,13 +78,13 @@ public class HelloServlet extends HttpServlet {
         if (req.getContentType().equals("text/plain")) {
             String data = readBody(req).toLowerCase();
             if (users.contains(data)) {
-                resp.sendError(400,
+                resp.sendError(HTTP_BAD_REQUEST,
                         "Not supporting updates - user does exist.");
             }
             users.add(data);
             out.write(data);
         } else {
-            resp.sendError(406,
+            resp.sendError(HTTP_NOT_ACCEPTED,
                     "Content-Type not defined or unknown - needs to be"
                             + " text/plain...");
         }
@@ -82,7 +99,7 @@ public class HelloServlet extends HttpServlet {
      * @throws IOException
      *             On error.
      */
-    private final String readBody(final HttpServletRequest request)
+    private String readBody(final HttpServletRequest request)
             throws IOException {
         InputStream in = request.getInputStream();
         BufferedReader bufferedReader = new BufferedReader(

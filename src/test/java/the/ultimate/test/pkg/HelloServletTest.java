@@ -21,7 +21,7 @@ import org.jmock.Mockery;
  * @author tmetsch
  *
  */
-public class HelloServletTest extends TestCase{
+public class HelloServletTest extends TestCase {
 
     /**
      * Mock context.
@@ -43,7 +43,6 @@ public class HelloServletTest extends TestCase{
      */
     private HelloServlet testClass = new HelloServlet();
 
-
     /*
      * Test for success
      */
@@ -51,7 +50,7 @@ public class HelloServletTest extends TestCase{
     /**
      * Test method for doGet.
      */
-    public void testDoGetForSuccess() {
+    public final void testDoGetForSuccess() {
         try {
             context.checking(new Expectations() {
                 {
@@ -74,7 +73,7 @@ public class HelloServletTest extends TestCase{
     /**
      * Test method for doPost.
      */
-    public void testDoPostForSuccess() {
+    public final void testDoPostForSuccess() {
         try {
             context.checking(new Expectations() {
                 {
@@ -104,7 +103,7 @@ public class HelloServletTest extends TestCase{
     /**
      * Test method for doGet.
      */
-    public void testDoGetForFailure() {
+    public final void testDoGetForFailure() {
         try {
             context.checking(new Expectations() {
                 {
@@ -130,7 +129,7 @@ public class HelloServletTest extends TestCase{
     /**
      * Test method for doPost.
      */
-    public void testDoPostForFailure() {
+    public final void testDoPostForFailure() {
         try {
             context.checking(new Expectations() {
                 {
@@ -160,7 +159,7 @@ public class HelloServletTest extends TestCase{
     /**
      * Test method for doPost.
      */
-    public void testDoPostForSanity() {
+    public final void testDoPostForSanity() {
         try {
             context.checking(new Expectations() {
                 {

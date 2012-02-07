@@ -36,6 +36,7 @@ public class HelloServlet extends HttpServlet {
      */
     public HelloServlet() {
         users = new LinkedList<String>();
+        users.add("bob");
     }
 
     @Override

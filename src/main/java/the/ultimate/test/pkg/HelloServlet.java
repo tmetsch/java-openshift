@@ -48,11 +48,12 @@ public class HelloServlet extends HttpServlet {
         if (users.size() == 0) {
             out.write("No user resource found.");
         } else if (path == null || path.equals("/")) {
+            out.write("I know the following users:");
             for (String name : users) {
                 out.write(name);
             }
         } else if (users.contains(path.substring(1))) {
-            out.write("Hello " + path);
+            out.write("Hello " + path.substring(1));
         } else {
             resp.sendError(404, "Path not found: " + path);
         }
@@ -63,17 +64,18 @@ public class HelloServlet extends HttpServlet {
             throws ServletException, IOException {
 
         PrintWriter out = resp.getWriter();
+        out.write("Hellow Rold");
 
-        // extract data
-        if (req.getContentType().equals("text/plain")) {
-            String data = readBody(req).toLowerCase();
-            users.add(data);
-            out.write(data);
-        } else {
-            resp.sendError(406,
-                    "Content-Type not defined or unknown - needs to be"
-                            + " text/plain...");
-        }
+//        // extract data
+//        if (req.getContentType().equals("text/plain")) {
+//            String data = readBody(req).toLowerCase();
+//            users.add(data);
+//            out.write(data);
+//        } else {
+//            resp.sendError(406,
+//                    "Content-Type not defined or unknown - needs to be"
+//                            + " text/plain...");
+//        }
     }
 
     /**

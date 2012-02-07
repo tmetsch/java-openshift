@@ -53,6 +53,7 @@ public class HelloServlet extends HttpServlet {
         } else if (users.size() == 0) {
             out.write("No user resource found.");
         } else {
+            out.write(path);
             resp.sendError(404);
         }
         out.close();
